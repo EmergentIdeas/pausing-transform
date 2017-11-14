@@ -1,0 +1,25 @@
+{
+  "name": "pausing-transform",
+  "version": "1.0.0",
+  "description": "A transform stream that will buffer data written until flushed.",
+  "main": "pausing-transform.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EmergentIdeas/pausing-transform.git"
+  },
+  "keywords": [
+    "stream",
+    "express",
+    "transform",
+    "pause"
+  ],
+  "author": "Dan Kolz of Emergent Ideas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EmergentIdeas/pausing-transform/issues"
+  },
+  "homepage": "https://github.com/EmergentIdeas/pausing-transform#readme"
+}
