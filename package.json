@@ -1,6 +1,6 @@
 {
   "name": "pausing-transform",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A transform stream that will buffer data written until flushed.",
   "main": "pausing-transform.js",
   "scripts": {

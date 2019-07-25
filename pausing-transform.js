@@ -8,13 +8,20 @@ class PausingTransform extends Transform {
 		this.transformer = transformer
 	}
 	_transform(chunk, encoding, callback) {
-		
 		return callback(null, this.transformer ? this.transformer(chunk.toString()) : chunk)
 	}
 	_flush(callback) {
-		let ret = super.write(this.pausedData, null, callback)
-		this.pausedData = ''
-		return ret
+		if(this.pausedData) {
+			let ret = super.write(this.pausedData, null, () => {
+				this.pausedData = ''
+				if(callback) {
+					return callback()
+				}
+			})
+		}
+		else if(callback) {
+			callback()
+		}
 	}
 	write(chunk, encoding, callback) {
 		if(this.paused) {
@@ -33,6 +40,16 @@ class PausingTransform extends Transform {
 	run() {
 		this.paused = false
 		this._flush()
+	}
+	end() {
+		if(this.pausedData) {
+			this._flush(() => {
+				super.end()
+			})
+		}
+		else {
+			super.end()
+		}
 	}
 }
 
