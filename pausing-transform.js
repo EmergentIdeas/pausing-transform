@@ -12,8 +12,9 @@ class PausingTransform extends Transform {
 	}
 	_flush(callback) {
 		if(this.pausedData) {
-			let ret = super.write(this.pausedData, null, () => {
-				this.pausedData = ''
+			let p = this.pausedData
+			this.pausedData = ''
+			let ret = super.write(p, null, () => {
 				if(callback) {
 					return callback()
 				}
